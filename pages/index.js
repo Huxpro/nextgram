@@ -1,6 +1,5 @@
-import React from 'react'
 import Modal from '../components/modal'
-import { style } from 'next/css'
+import Link from 'next/link'
 
 export default class extends React.Component {
   static getInitialProps () {
@@ -36,12 +35,13 @@ export default class extends React.Component {
 
   showPhoto (e, id) {
     e.preventDefault()
+    console.log(this.props.url);
     this.props.url.push('/photo?id=' + id)
   }
 
   render () {
     return (
-      <div className={style(styles.list)}>
+      <ul>
         {
           this.props.url.query.id &&
             <Modal
@@ -51,44 +51,41 @@ export default class extends React.Component {
         }
         {
           this.props.photos.map((id) => (
-            <div key={id} className={style(styles.photo)}>
-              <a
-                className={style(styles.photoLink)}
-                href={'/photo?id=' + id}
+            <div key={id} className="photo">
+              <a href={'/photo?id=' + id}
                 onClick={(e) => this.showPhoto(e, id)}>
                 {id}
               </a>
+              <br />
+              <Link href={'/photo?id=' + id}>{`<Link/> - ${id}`}</Link>
             </div>
           ))
         }
-      </div>
+        <style jsx>{`
+          ul {
+            padding: 50px;
+            text-align: center;
+          }
+          .photo{
+            display: inline-block;
+          }
+          .photo > a {
+            color: #333;
+            vertical-align: middle;
+            cursor: pointer;
+            background: #eee;
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            line-height: 250px;
+            margin: 10px;
+            border: 2px solid transparent;
+          }
+          .photo > a:hover{
+            border-color: blue;
+          }
+        `}</style>
+      </ul>
     )
-  }
-}
-
-const styles = {
-  list: {
-    padding: '50px',
-    textAlign: 'center'
-  },
-
-  photo: {
-    display: 'inline-block'
-  },
-
-  photoLink: {
-    color: '#333',
-    verticalAlign: 'middle',
-    cursor: 'pointer',
-    background: '#eee',
-    display: 'inline-block',
-    width: '250px',
-    height: '250px',
-    lineHeight: '250px',
-    margin: '10px',
-    border: '2px solid transparent',
-    ':hover': {
-      borderColor: 'blue'
-    }
   }
 }

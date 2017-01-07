@@ -1,26 +1,20 @@
-import React from 'react'
-import { style } from 'next/css'
-
 export default ({ url: { query: { id } } }) => (
-  <div className={style(styles.main)}>
-    <h1 className={style(styles.heading)}>
+  <main>
+    <h1>
       User profile:
       {' '}
-      <b className={style(styles.username)}>{id}</b>
+      <b>{id}</b>
     </h1>
-  </div>
+    <style jsx>{`
+      main {
+        padding: 100px;
+      }
+      h1 {
+        font: 15px Monaco;
+      }
+      b {
+        color: blue;
+      }
+    `}</style>
+  </main>
 )
-
-const styles = {
-  main: {
-    padding: '100px'
-  },
-
-  heading: {
-    font: '15px Monaco'
-  },
-
-  username: {
-    color: 'blue'
-  }
-}

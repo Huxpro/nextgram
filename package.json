@@ -2,12 +2,12 @@
   "name": "nextgram",
   "private": true,
   "dependencies": {
-    "next": "latest",
-    "standard": "8.4.0",
-    "babel-eslint": "7.0.0"
+    "babel-eslint": "7.0.0",
+    "next": "2.0.0-beta.16",
+    "standard": "8.4.0"
   },
   "standard": {
-     "parser": "babel-eslint"
+    "parser": "babel-eslint"
   },
   "scripts": {
     "dev": "next",
