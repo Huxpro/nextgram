@@ -5,7 +5,6 @@ export default ({ id }) => (
     <div className='image'>
       {id}
     </div>
-
     <div className='sidebar'>
       <ul className='sidebarList'>
         <li>

@@ -1,4 +1,5 @@
 import Router from 'next/router'
+import Link from 'next/link'
 import Modal from '../components/modal'
 
 export default class extends React.Component {
@@ -29,37 +30,20 @@ export default class extends React.Component {
     }
   }
 
-  dismissModal () {
-    Router.push('/')
-  }
-
-  showPhoto (e, id) {
-    e.preventDefault()
-    Router.push(`/?photoId=${id}`, `/photo?id=${id}`)
-  }
-
   render () {
     const { url, photos } = this.props
 
     return (
       <div className='list'>
-        {
-          url.query.photoId &&
-            <Modal
-              id={url.query.photoId}
-              onDismiss={() => this.dismissModal()}
-            />
-        }
+        { url.query.photoId && <Modal id={url.query.photoId}/> }
         {
           photos.map((id) => (
             <div key={id} className='photo'>
-              <a
-                className='photoLink'
-                href={`/photo?id=${id}`}
-                onClick={(e) => this.showPhoto(e, id)}
-              >
-                {id}
-              </a>
+              <Link
+                href={`/?photoId=${id}`}
+                as={`/photo?id=${id}`}>
+                <a className='photoLink'>{id}</a>
+              </Link>
             </div>
           ))
         }
