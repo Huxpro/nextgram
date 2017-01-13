@@ -1,4 +1,3 @@
-import React from 'react'
 import Photo from './frame'
 
 export default class extends React.Component {

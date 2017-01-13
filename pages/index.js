@@ -1,6 +1,4 @@
-import React from 'react'
 import Router from 'next/router'
-
 import Modal from '../components/modal'
 
 export default class extends React.Component {

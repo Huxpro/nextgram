@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default ({ url: { query: { id } } }) => (
   <div className='main'>
     <h1 className='heading'>
